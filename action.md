@@ -51,6 +51,10 @@ jobs:
         env: 
           ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
 
+<!-- set node v -->
+        with:
+            node-version: '22'
+            cache: 'npm'
 
 <!--  Add cache -->
       - name: Set up Node.js
