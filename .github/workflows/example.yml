@@ -36,10 +36,13 @@ jobs:
         run: npm run build
         env: 
           ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
-
-      - name: Test build
-        run: npm run test
-        env: 
-          ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: next-build
+          path: .next
+          include-hidden-files: true
+          retention-days: 1
 
 

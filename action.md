@@ -50,6 +50,11 @@ jobs:
         run: npm run build
         env: 
           ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
+      
+      - name: Test build
+        run: npm run test
+        env: 
+          ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
 
 <!-- set node v -->
         with:
