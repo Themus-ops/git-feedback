@@ -115,7 +115,7 @@ jobs:
 
 > [!IMPORTANT]
 > **Why pin the version?** Letting Node default to "whatever's latest" means your build can silently break when a new major version ships. Pinning `node-version: '22'` keeps local, CI, and production environments consistent.
->
+
 > [!TIP]
 > **The `cache: 'npm'` option** automatically caches `~/.npm` based on your lockfile hash — no need to manually configure `actions/cache` for dependencies.
 
@@ -279,7 +279,7 @@ Once both test jobs pass, automatically open (or refresh) a PR from `testing` in
 
 > [!NOTE]
 > **`actions/github-script@v7`** gives you an authenticated, pre-configured Octokit client (`github`) inside the `script:` block, so you can call the GitHub REST API directly in JavaScript without manually handling auth tokens.
->
+
 > [!WARNING]
 > **Logic note:** This closes the existing PR and opens a brand-new one each run, which loses PR comments/review history and reassigns a new PR number. If you just want to *refresh* the same PR, consider using `pulls.update()` on the existing PR's body/title instead of closing + recreating.
 
@@ -334,6 +334,8 @@ Update the test steps to capture the test summary:
         env:
           ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
 ```
+Update the create-pr steps to capture the test summary:
+
 ```yaml
 
   create-pr:
@@ -390,7 +392,7 @@ Update the test steps to capture the test summary:
 
 > [!TIP]
 > **The `EOF` heredoc trick** (`echo "summary<<EOF" ... echo "EOF"`) is required because `GITHUB_OUTPUT` values are normally single-line. This delimiter syntax lets you write **multi-line** content (like a full test report) into a single output variable safely.
->
+
 > [!CAUTION]
 > **Watch out for the `EOF` delimiter colliding with content.** If your test summary ever contains the literal string `EOF` on its own line, this will break the output parsing. For production pipelines, use a random delimiter instead, e.g. `echo "summary<<ghadelim_$(uuidgen)"`.
 
