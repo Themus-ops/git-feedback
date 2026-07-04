@@ -2,7 +2,7 @@ name: EX2
 
 on:
   push:
-    branch:[main]
+    branches: [main]
 
 jobs:
   example:
