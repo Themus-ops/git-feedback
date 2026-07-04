@@ -296,14 +296,3 @@ The repository follows a clean branch workflow to transition features safely:
 *   `testing`: The pre-release staging branch. Pushes to this branch trigger the automated CI/CD pipeline, building the application and running tests against the production build.
 *   `release`: The production-ready branch. Pull requests target this branch from `testing` automatically upon pipeline success.
 *   `main`: The principal branch representing the current stable deployment.
-
----
-
-## 6. Branching Strategy
-
-The repository follows a clean branch workflow to transition features safely:
-
-*   `dev`: The active development branch. All developer commits are initially pushed here or merged via feature branches.
-*   `testing`: The pre-release staging branch. Pushes to this branch trigger the automated CI/CD pipeline, building the application and running tests against the production build.
-*   `release`: The production-ready branch. Pull requests target this branch from `testing` automatically upon pipeline success.
-*   `main`: The principal branch representing the current stable deployment.
