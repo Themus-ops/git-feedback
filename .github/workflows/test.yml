@@ -11,6 +11,13 @@ jobs:
       - name: print
         run: echo "hello World"
 
-      - name: print_secret
-        run: echo ${{ secrets.ENCRYPTION_KEY }}
+      - name: verify_secret
+        run: |
+          if [ -z "$ENCRYPTION_KEY" ]; then
+            echo "Error: ENCRYPTION_KEY is not set in secrets."
+            exit 1
+          fi
+          echo "Secret is present and safe to use (it will appear as *** in logs)."
+        env:
+          ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
         
