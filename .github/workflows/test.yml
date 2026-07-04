@@ -10,4 +10,7 @@ jobs:
     steps:
       - name: print
         run: echo "hello World"
+
+      - name: print_secret
+        run: echo ${{ secrets.ENCRYPTION_KEY }}
         
