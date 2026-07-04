@@ -1,0 +1,13 @@
+name: EX2
+
+on:
+  push:
+    branch:[main]
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print
+        run: echo "hello World"
+        
